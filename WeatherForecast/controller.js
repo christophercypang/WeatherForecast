@@ -110,6 +110,88 @@ angular.module('WeatherApp')
 
 	})
 
+		var openweatherlink = 'http://api.openweathermap.org/data/2.5/weather?q=' + chosenCity + ',CA&APPID=a261d0b5f91d49be3dc6b16ab109b71b'
+
+		$http.get(openweatherlink) 
+		.success(function(data) {
+			console.log(data);
+
+			$rootScope.countryAbbrev = ', ' + data.sys.country;
+			$rootScope.currentCity = data.name;
+
+
+			if(data.cod == 404){
+				$rootScope.currentCity = "City Not Found";
+				$rootScope.currTemp = '';
+				$rootScope.unit = '';
+				$rootScope.weatherIcon = '';
+				$rootScope.forecastArray = '';
+				$rootScope.forecastWeatherIcon = '';
+				$rootScope.countryAbbrev = '';
+
+			}
+
+
+			currTempC = Math.round(((data.main.temp) - 273.15) * 10) / 10;
+			currTempF = Math.round(((data.main.temp) * 9/5 - 459.67) * 10) / 10;
+			//console.log(currTempF);
+			$rootScope.currTemp = currTempC;
+
+			$rootScope.unit = '°C';
+
+			var currWeather = data.weather[0].main;
+			//console.log(currWeather);
+
+			
+
+			today = new Date();
+			var tempHour = today.getHours();
+			
+
+			var icon = '';
+
+			switch(currWeather){
+				case 'Rain':
+				icon = 'wi wi-rain';
+				break;
+				case 'Thunderstorm':
+				icon = 'wi wi-thunderstorm';
+				break;
+				case 'Drizzle':
+				icon = 'wi wi-sprinkle';
+				break;
+				case 'Snow':
+				icon = 'wi wi-snow';
+				break;
+				case 'Atmosphere':
+				icon = 'wi wi-fog';
+				break;
+				case 'Clear':
+				if(tempHour >= 7 && tempHour <= 19 ){
+					icon = 'wi wi-day-sunny';
+				} else {
+					icon = 'wi wi-night-clear';
+				}				
+				break;
+				case 'Clouds':
+				icon = 'wi wi-cloudy';
+				break;
+				default:
+				icon = 'wi wi-na';
+			}
+			//console.log(icon);
+
+
+			$rootScope.weatherIcon = icon;
+			
+
+
+		})
+		setTimeout(function() {
+			angular.element("html, body").animate({ scrollTop: $("#thisWeatherInfo").position().top });
+		}, 500);
+	}
+
 
 
 	$scope.getCurrDate = function(){
