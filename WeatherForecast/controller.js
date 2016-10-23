@@ -2,10 +2,20 @@ angular.module('WeatherApp')
 
 .controller('WeatherController', function($scope, $rootScope) {
 
+	var chosenCity = '';
+
+	var currTempC = '';
+	var currTempF = '';
+
+	var forecast = [];
 
 	var tempDay = '';
 	var tempMonth = '';
 	var date = '';
+
+	var tempTemperatureC = [];
+	var tempTemperatureF = [];
+	var tempIconArr = [];
 
 	$scope.clickedCity = function(param){
 		chosenCity = param;
@@ -289,6 +299,13 @@ angular.module('WeatherApp')
 		$rootScope.dateToday = currentDate;
 
 	}
+
+	var tick = function() {
+		$scope.clock = Date.now();
+	}
+
+	tick();
+	$interval(tick, 1000);
 
 
 });
