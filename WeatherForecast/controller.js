@@ -423,5 +423,12 @@ angular.module('WeatherApp')
 
 	}
 
+	$scope.threeDay = true;
+	$scope.sevenDay = false;
+
+	$scope.kelowna = false;
+	$scope.vancouver = false;
+	$scope.victoria = false;
+
 
 });
