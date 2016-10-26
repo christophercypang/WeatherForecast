@@ -1,6 +1,6 @@
 angular.module('WeatherApp')
 
-.controller('WeatherController', function($scope, $rootScope) {
+.controller('WeatherController', function($scope, $rootScope, $http, $interval) {
 
 	var chosenCity = '';
 

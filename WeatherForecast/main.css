@@ -3,3 +3,34 @@ body {
 	font-family: "Roboto";
 	padding-bottom: 12%;
 }
+
+
+.header {
+	color: white;
+	text-align: center;
+	margin-top: 50px;
+	font-size: 32px;
+}
+
+.author {
+	color: #c2c2d6;
+	text-align: center;
+	font-size: 18px;
+}
+
+.byCP {
+	text-decoration: none;
+	color: #ffa31a;
+}
+
+.byCP:hover {
+	text-decoration: none;
+	color: #F9DF04;
+}
+
+.date {
+	text-align: center;
+	color: white;
+	font-size: 28px;
+	margin-top: 25px;
+}
