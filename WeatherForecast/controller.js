@@ -87,8 +87,8 @@ angular.module('WeatherApp')
 				}
 
 				var fullDate = day + ' ' + tempMonth + '/' + tempDate;	
-				tempTemperatureC[i] = ((Math.round(((forecastData.list[i].temp.day) - 273.15) * 10) / 10) + '°C');
-				tempTemperatureF[i] = ((Math.round(((forecastData.list[i].temp.day) * 9/5 - 459.67) * 10) / 10) + '°F');
+				tempTemperatureC[i] = ((Math.round(((forecastData.list[i].temp.day) - 273.15) * 10) / 10) + '\u00B0C');
+				tempTemperatureF[i] = ((Math.round(((forecastData.list[i].temp.day) * 9/5 - 459.67) * 10) / 10) + '\u00B0F');
 
 				tempWeather.push(fullDate);
 				tempWeather.push(tempTemperatureC[i]);
@@ -172,7 +172,7 @@ angular.module('WeatherApp')
 			//console.log(currTempF);
 			$rootScope.currTemp = currTempC;
 
-			$rootScope.unit = '°C';
+			$rootScope.unit = '\u00B0C';
 
 			var currWeather = data.weather[0].main;
 			//console.log(currWeather);
@@ -237,8 +237,8 @@ angular.module('WeatherApp')
 
 
 	$scope.switchTemp = function(param) {
-		if(param == '°C') {
-			$rootScope.unit = '°F';
+		if(param == '\u00B0C') {
+			$rootScope.unit = '\u00B0F';
 			$rootScope.currTemp = currTempF;
 
 			for (var i = 0; i < tempTemperatureF.length; i++){
@@ -246,7 +246,7 @@ angular.module('WeatherApp')
 			}
 
 		} else {
-			$rootScope.unit = '°C';
+			$rootScope.unit = '\u00B0C';
 			$rootScope.currTemp = currTempC;
 
 			for (var i = 0; i < tempTemperatureC.length; i++){
