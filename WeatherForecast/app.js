@@ -4,12 +4,12 @@ angular.module('WeatherApp', ['ngRoute', 'WeatherApp'])
 .config(function ($routeProvider, $locationProvider){
 
 	$routeProvider
-		.when('/weather', {
+		.when('/index', {
 			controller: 'WeatherController',
-			templateUrl: 'src/weather.html'
+			templateUrl: 'src/index.html'
 		})
 		.otherwise({
-			redirectTo: '/weather'
+			redirectTo: '/index'
 		})
 
 });
